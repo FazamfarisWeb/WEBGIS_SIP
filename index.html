@@ -38,20 +38,19 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="data/PetaRadiusKepadatanSekolah_2.js"></script>
-        <script src="data/PetaAksesPermukiman_3.js"></script>
-        <script src="data/PetaAksesJalan_4.js"></script>
-        <script src="data/PetaRawanBanjir_5.js"></script>
-        <script src="data/PetaRawanLongsor_6.js"></script>
+        <script src="data/PetaJangkauanSekolah_1.js"></script>
+        <script src="data/PetaAksesPermukiman_2.js"></script>
+        <script src="data/PetaAksesJalan_3.js"></script>
+        <script src="data/PetaPolaRuang_4.js"></script>
+        <script src="data/PetaRawanLongsor_5.js"></script>
+        <script src="data/PetaRawanBanjir_6.js"></script>
         <script src="data/PetaKemiringanLereng_7.js"></script>
-        <script src="data/PetaLokasiPengembangan_8.js"></script>
+        <script src="data/PetaKesesuaianLokasi_8.js"></script>
         <script src="data/PermukimanEksisting_9.js"></script>
         <script src="data/SungaiBrantas_10.js"></script>
-        <script src="data/BatasWilayahKecamatan_11.js"></script>
+        <script src="data/BatasKelurahan_11.js"></script>
         <script src="data/SMASMKEksisting_12.js"></script>
-        <script src="data/JaringanJalan_13.js"></script>
-        <script src="data/JalanKolektor_14.js"></script>
-        <script src="data/JalurKeretaApi_15.js"></script>
+        <script src="data/JalanKolektor_13.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -112,22 +111,10 @@
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
-        map.createPane('pane_ESRISatellite_0');
-        map.getPane('pane_ESRISatellite_0').style.zIndex = 400;
-        var layer_ESRISatellite_0 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-            pane: 'pane_ESRISatellite_0',
-            opacity: 1.0,
-            attribution: '',
-            minZoom: 1,
-            maxZoom: 28,
-            minNativeZoom: 0,
-            maxNativeZoom: 18
-        });
-        layer_ESRISatellite_0;
-        map.createPane('pane_Positron_1');
-        map.getPane('pane_Positron_1').style.zIndex = 401;
-        var layer_Positron_1 = L.tileLayer('https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-            pane: 'pane_Positron_1',
+        map.createPane('pane_Positron_0');
+        map.getPane('pane_Positron_0').style.zIndex = 400;
+        var layer_Positron_0 = L.tileLayer('https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+            pane: 'pane_Positron_0',
             opacity: 1.0,
             attribution: '<a href="https://cartodb.com/basemaps/">Map tiles by CartoDB, under CC BY 3.0. Data by OpenStreetMap, under ODbL.</a>',
             minZoom: 1,
@@ -135,9 +122,9 @@
             minNativeZoom: 0,
             maxNativeZoom: 20
         });
-        layer_Positron_1;
-        map.addLayer(layer_Positron_1);
-        function pop_PetaRadiusKepadatanSekolah_2(feature, layer) {
+        layer_Positron_0;
+        map.addLayer(layer_Positron_0);
+        function pop_PetaJangkauanSekolah_1(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -176,31 +163,11 @@
             popup.setContent(updatedContent);
         }
 
-        function style_PetaRadiusKepadatanSekolah_2_0(feature) {
+        function style_PetaJangkauanSekolah_1_0(feature) {
             switch(String(feature.properties['Jarak'])) {
-                case '>3000':
-                    return {
-                pane: 'pane_PetaRadiusKepadatanSekolah_2',
-                stroke: false, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(26,150,65,1.0)',
-                interactive: false,
-            }
-                    break;
-                case '2000':
-                    return {
-                pane: 'pane_PetaRadiusKepadatanSekolah_2',
-                stroke: false, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,255,192,1.0)',
-                interactive: false,
-            }
-                    break;
                 case '1000':
                     return {
-                pane: 'pane_PetaRadiusKepadatanSekolah_2',
+                pane: 'pane_PetaJangkauanSekolah_1',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -208,22 +175,42 @@
                 interactive: false,
             }
                     break;
+                case '2000':
+                    return {
+                pane: 'pane_PetaJangkauanSekolah_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,192,1.0)',
+                interactive: false,
+            }
+                    break;
+                case '>3000':
+                    return {
+                pane: 'pane_PetaJangkauanSekolah_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(26,150,65,1.0)',
+                interactive: false,
+            }
+                    break;
             }
         }
-        map.createPane('pane_PetaRadiusKepadatanSekolah_2');
-        map.getPane('pane_PetaRadiusKepadatanSekolah_2').style.zIndex = 402;
-        map.getPane('pane_PetaRadiusKepadatanSekolah_2').style['mix-blend-mode'] = 'normal';
-        var layer_PetaRadiusKepadatanSekolah_2 = new L.geoJson(json_PetaRadiusKepadatanSekolah_2, {
+        map.createPane('pane_PetaJangkauanSekolah_1');
+        map.getPane('pane_PetaJangkauanSekolah_1').style.zIndex = 401;
+        map.getPane('pane_PetaJangkauanSekolah_1').style['mix-blend-mode'] = 'normal';
+        var layer_PetaJangkauanSekolah_1 = new L.geoJson(json_PetaJangkauanSekolah_1, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_PetaRadiusKepadatanSekolah_2',
-            layerName: 'layer_PetaRadiusKepadatanSekolah_2',
-            pane: 'pane_PetaRadiusKepadatanSekolah_2',
-            onEachFeature: pop_PetaRadiusKepadatanSekolah_2,
-            style: style_PetaRadiusKepadatanSekolah_2_0,
+            dataVar: 'json_PetaJangkauanSekolah_1',
+            layerName: 'layer_PetaJangkauanSekolah_1',
+            pane: 'pane_PetaJangkauanSekolah_1',
+            onEachFeature: pop_PetaJangkauanSekolah_1,
+            style: style_PetaJangkauanSekolah_1_0,
         });
-        bounds_group.addLayer(layer_PetaRadiusKepadatanSekolah_2);
-        function pop_PetaAksesPermukiman_3(feature, layer) {
+        bounds_group.addLayer(layer_PetaJangkauanSekolah_1);
+        function pop_PetaAksesPermukiman_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -265,11 +252,11 @@
             popup.setContent(updatedContent);
         }
 
-        function style_PetaAksesPermukiman_3_0(feature) {
+        function style_PetaAksesPermukiman_2_0(feature) {
             switch(String(feature.properties['Jarak'])) {
                 case '0-300':
                     return {
-                pane: 'pane_PetaAksesPermukiman_3',
+                pane: 'pane_PetaAksesPermukiman_2',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -279,7 +266,7 @@
                     break;
                 case '300-600':
                     return {
-                pane: 'pane_PetaAksesPermukiman_3',
+                pane: 'pane_PetaAksesPermukiman_2',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -289,7 +276,7 @@
                     break;
                 case '600-1200':
                     return {
-                pane: 'pane_PetaAksesPermukiman_3',
+                pane: 'pane_PetaAksesPermukiman_2',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -299,7 +286,7 @@
                     break;
                 case '1200-3000':
                     return {
-                pane: 'pane_PetaAksesPermukiman_3',
+                pane: 'pane_PetaAksesPermukiman_2',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -309,20 +296,20 @@
                     break;
             }
         }
-        map.createPane('pane_PetaAksesPermukiman_3');
-        map.getPane('pane_PetaAksesPermukiman_3').style.zIndex = 403;
-        map.getPane('pane_PetaAksesPermukiman_3').style['mix-blend-mode'] = 'normal';
-        var layer_PetaAksesPermukiman_3 = new L.geoJson(json_PetaAksesPermukiman_3, {
+        map.createPane('pane_PetaAksesPermukiman_2');
+        map.getPane('pane_PetaAksesPermukiman_2').style.zIndex = 402;
+        map.getPane('pane_PetaAksesPermukiman_2').style['mix-blend-mode'] = 'normal';
+        var layer_PetaAksesPermukiman_2 = new L.geoJson(json_PetaAksesPermukiman_2, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_PetaAksesPermukiman_3',
-            layerName: 'layer_PetaAksesPermukiman_3',
-            pane: 'pane_PetaAksesPermukiman_3',
-            onEachFeature: pop_PetaAksesPermukiman_3,
-            style: style_PetaAksesPermukiman_3_0,
+            dataVar: 'json_PetaAksesPermukiman_2',
+            layerName: 'layer_PetaAksesPermukiman_2',
+            pane: 'pane_PetaAksesPermukiman_2',
+            onEachFeature: pop_PetaAksesPermukiman_2,
+            style: style_PetaAksesPermukiman_2_0,
         });
-        bounds_group.addLayer(layer_PetaAksesPermukiman_3);
-        function pop_PetaAksesJalan_4(feature, layer) {
+        bounds_group.addLayer(layer_PetaAksesPermukiman_2);
+        function pop_PetaAksesJalan_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -364,11 +351,11 @@
             popup.setContent(updatedContent);
         }
 
-        function style_PetaAksesJalan_4_0(feature) {
+        function style_PetaAksesJalan_3_0(feature) {
             switch(String(feature.properties['Jarak'])) {
                 case '300 Meter':
                     return {
-                pane: 'pane_PetaAksesJalan_4',
+                pane: 'pane_PetaAksesJalan_3',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -378,7 +365,7 @@
                     break;
                 case '600 Meter':
                     return {
-                pane: 'pane_PetaAksesJalan_4',
+                pane: 'pane_PetaAksesJalan_3',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -388,7 +375,7 @@
                     break;
                 case '1200 Meter':
                     return {
-                pane: 'pane_PetaAksesJalan_4',
+                pane: 'pane_PetaAksesJalan_3',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -398,7 +385,7 @@
                     break;
                 case '3000 Meter':
                     return {
-                pane: 'pane_PetaAksesJalan_4',
+                pane: 'pane_PetaAksesJalan_3',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -408,7 +395,7 @@
                     break;
                 case '>3000 Meter':
                     return {
-                pane: 'pane_PetaAksesJalan_4',
+                pane: 'pane_PetaAksesJalan_3',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -418,20 +405,20 @@
                     break;
             }
         }
-        map.createPane('pane_PetaAksesJalan_4');
-        map.getPane('pane_PetaAksesJalan_4').style.zIndex = 404;
-        map.getPane('pane_PetaAksesJalan_4').style['mix-blend-mode'] = 'normal';
-        var layer_PetaAksesJalan_4 = new L.geoJson(json_PetaAksesJalan_4, {
+        map.createPane('pane_PetaAksesJalan_3');
+        map.getPane('pane_PetaAksesJalan_3').style.zIndex = 403;
+        map.getPane('pane_PetaAksesJalan_3').style['mix-blend-mode'] = 'normal';
+        var layer_PetaAksesJalan_3 = new L.geoJson(json_PetaAksesJalan_3, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_PetaAksesJalan_4',
-            layerName: 'layer_PetaAksesJalan_4',
-            pane: 'pane_PetaAksesJalan_4',
-            onEachFeature: pop_PetaAksesJalan_4,
-            style: style_PetaAksesJalan_4_0,
+            dataVar: 'json_PetaAksesJalan_3',
+            layerName: 'layer_PetaAksesJalan_3',
+            pane: 'pane_PetaAksesJalan_3',
+            onEachFeature: pop_PetaAksesJalan_3,
+            style: style_PetaAksesJalan_3_0,
         });
-        bounds_group.addLayer(layer_PetaAksesJalan_4);
-        function pop_PetaRawanBanjir_5(feature, layer) {
+        bounds_group.addLayer(layer_PetaAksesJalan_3);
+        function pop_PetaPolaRuang_4(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -453,12 +440,6 @@
                     <tr>\
                         <td colspan="2">' + (feature.properties['Kelas'] !== null ? autolinker.link(feature.properties['Kelas'].toLocaleString()) : '') + '</td>\
                     </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['S_Banjir'] !== null ? autolinker.link(feature.properties['S_Banjir'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['gridcode'] !== null ? autolinker.link(feature.properties['gridcode'].toLocaleString()) : '') + '</td>\
-                    </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
             var popup = layer.getPopup();
@@ -467,11 +448,11 @@
             popup.setContent(updatedContent);
         }
 
-        function style_PetaRawanBanjir_5_0(feature) {
+        function style_PetaPolaRuang_4_0(feature) {
             switch(String(feature.properties['Kelas'])) {
-                case 'Rendah':
+                case 'Sesuai':
                     return {
-                pane: 'pane_PetaRawanBanjir_5',
+                pane: 'pane_PetaPolaRuang_4',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -479,9 +460,9 @@
                 interactive: false,
             }
                     break;
-                case 'Tinggi':
+                case 'Tidak Sesuai':
                     return {
-                pane: 'pane_PetaRawanBanjir_5',
+                pane: 'pane_PetaPolaRuang_4',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -491,20 +472,20 @@
                     break;
             }
         }
-        map.createPane('pane_PetaRawanBanjir_5');
-        map.getPane('pane_PetaRawanBanjir_5').style.zIndex = 405;
-        map.getPane('pane_PetaRawanBanjir_5').style['mix-blend-mode'] = 'normal';
-        var layer_PetaRawanBanjir_5 = new L.geoJson(json_PetaRawanBanjir_5, {
+        map.createPane('pane_PetaPolaRuang_4');
+        map.getPane('pane_PetaPolaRuang_4').style.zIndex = 404;
+        map.getPane('pane_PetaPolaRuang_4').style['mix-blend-mode'] = 'normal';
+        var layer_PetaPolaRuang_4 = new L.geoJson(json_PetaPolaRuang_4, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_PetaRawanBanjir_5',
-            layerName: 'layer_PetaRawanBanjir_5',
-            pane: 'pane_PetaRawanBanjir_5',
-            onEachFeature: pop_PetaRawanBanjir_5,
-            style: style_PetaRawanBanjir_5_0,
+            dataVar: 'json_PetaPolaRuang_4',
+            layerName: 'layer_PetaPolaRuang_4',
+            pane: 'pane_PetaPolaRuang_4',
+            onEachFeature: pop_PetaPolaRuang_4,
+            style: style_PetaPolaRuang_4_0,
         });
-        bounds_group.addLayer(layer_PetaRawanBanjir_5);
-        function pop_PetaRawanLongsor_6(feature, layer) {
+        bounds_group.addLayer(layer_PetaPolaRuang_4);
+        function pop_PetaRawanLongsor_5(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -540,11 +521,11 @@
             popup.setContent(updatedContent);
         }
 
-        function style_PetaRawanLongsor_6_0(feature) {
+        function style_PetaRawanLongsor_5_0(feature) {
             switch(String(feature.properties['Kelas'])) {
                 case 'Rendah':
                     return {
-                pane: 'pane_PetaRawanLongsor_6',
+                pane: 'pane_PetaRawanLongsor_5',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -554,7 +535,7 @@
                     break;
                 case 'Tinggi':
                     return {
-                pane: 'pane_PetaRawanLongsor_6',
+                pane: 'pane_PetaRawanLongsor_5',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -564,19 +545,92 @@
                     break;
             }
         }
-        map.createPane('pane_PetaRawanLongsor_6');
-        map.getPane('pane_PetaRawanLongsor_6').style.zIndex = 406;
-        map.getPane('pane_PetaRawanLongsor_6').style['mix-blend-mode'] = 'normal';
-        var layer_PetaRawanLongsor_6 = new L.geoJson(json_PetaRawanLongsor_6, {
+        map.createPane('pane_PetaRawanLongsor_5');
+        map.getPane('pane_PetaRawanLongsor_5').style.zIndex = 405;
+        map.getPane('pane_PetaRawanLongsor_5').style['mix-blend-mode'] = 'normal';
+        var layer_PetaRawanLongsor_5 = new L.geoJson(json_PetaRawanLongsor_5, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_PetaRawanLongsor_6',
-            layerName: 'layer_PetaRawanLongsor_6',
-            pane: 'pane_PetaRawanLongsor_6',
-            onEachFeature: pop_PetaRawanLongsor_6,
-            style: style_PetaRawanLongsor_6_0,
+            dataVar: 'json_PetaRawanLongsor_5',
+            layerName: 'layer_PetaRawanLongsor_5',
+            pane: 'pane_PetaRawanLongsor_5',
+            onEachFeature: pop_PetaRawanLongsor_5,
+            style: style_PetaRawanLongsor_5_0,
         });
-        bounds_group.addLayer(layer_PetaRawanLongsor_6);
+        bounds_group.addLayer(layer_PetaRawanLongsor_5);
+        function pop_PetaRawanBanjir_6(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (var i in e.target._eventParents) {
+                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
+                            e.target._eventParents[i].resetStyle(e.target);
+                        }
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Kelas'] !== null ? autolinker.link(feature.properties['Kelas'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['S_Banjir'] !== null ? autolinker.link(feature.properties['S_Banjir'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['gridcode'] !== null ? autolinker.link(feature.properties['gridcode'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+            var popup = layer.getPopup();
+            var content = popup.getContent();
+            var updatedContent = removeEmptyRowsFromPopupContent(content, feature);
+            popup.setContent(updatedContent);
+        }
+
+        function style_PetaRawanBanjir_6_0(feature) {
+            switch(String(feature.properties['Kelas'])) {
+                case 'Rendah':
+                    return {
+                pane: 'pane_PetaRawanBanjir_6',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(26,150,65,1.0)',
+                interactive: false,
+            }
+                    break;
+                case 'Tinggi':
+                    return {
+                pane: 'pane_PetaRawanBanjir_6',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,25,28,1.0)',
+                interactive: false,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_PetaRawanBanjir_6');
+        map.getPane('pane_PetaRawanBanjir_6').style.zIndex = 406;
+        map.getPane('pane_PetaRawanBanjir_6').style['mix-blend-mode'] = 'normal';
+        var layer_PetaRawanBanjir_6 = new L.geoJson(json_PetaRawanBanjir_6, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_PetaRawanBanjir_6',
+            layerName: 'layer_PetaRawanBanjir_6',
+            pane: 'pane_PetaRawanBanjir_6',
+            onEachFeature: pop_PetaRawanBanjir_6,
+            style: style_PetaRawanBanjir_6_0,
+        });
+        bounds_group.addLayer(layer_PetaRawanBanjir_6);
         function pop_PetaKemiringanLereng_7(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -686,7 +740,7 @@
             style: style_PetaKemiringanLereng_7_0,
         });
         bounds_group.addLayer(layer_PetaKemiringanLereng_7);
-        function pop_PetaLokasiPengembangan_8(feature, layer) {
+        function pop_PetaKesesuaianLokasi_8(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -716,11 +770,11 @@
             popup.setContent(updatedContent);
         }
 
-        function style_PetaLokasiPengembangan_8_0(feature) {
+        function style_PetaKesesuaianLokasi_8_0(feature) {
             switch(String(feature.properties['Keterangan'])) {
                 case 'Lokasi Sangat Sesuai':
                     return {
-                pane: 'pane_PetaLokasiPengembangan_8',
+                pane: 'pane_PetaKesesuaianLokasi_8',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -730,7 +784,7 @@
                     break;
                 case 'Lokasi Sesuai':
                     return {
-                pane: 'pane_PetaLokasiPengembangan_8',
+                pane: 'pane_PetaKesesuaianLokasi_8',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -740,7 +794,7 @@
                     break;
                 case 'Lokasi Tidak Sesuai':
                     return {
-                pane: 'pane_PetaLokasiPengembangan_8',
+                pane: 'pane_PetaKesesuaianLokasi_8',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
@@ -750,20 +804,20 @@
                     break;
             }
         }
-        map.createPane('pane_PetaLokasiPengembangan_8');
-        map.getPane('pane_PetaLokasiPengembangan_8').style.zIndex = 408;
-        map.getPane('pane_PetaLokasiPengembangan_8').style['mix-blend-mode'] = 'normal';
-        var layer_PetaLokasiPengembangan_8 = new L.geoJson(json_PetaLokasiPengembangan_8, {
+        map.createPane('pane_PetaKesesuaianLokasi_8');
+        map.getPane('pane_PetaKesesuaianLokasi_8').style.zIndex = 408;
+        map.getPane('pane_PetaKesesuaianLokasi_8').style['mix-blend-mode'] = 'normal';
+        var layer_PetaKesesuaianLokasi_8 = new L.geoJson(json_PetaKesesuaianLokasi_8, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_PetaLokasiPengembangan_8',
-            layerName: 'layer_PetaLokasiPengembangan_8',
-            pane: 'pane_PetaLokasiPengembangan_8',
-            onEachFeature: pop_PetaLokasiPengembangan_8,
-            style: style_PetaLokasiPengembangan_8_0,
+            dataVar: 'json_PetaKesesuaianLokasi_8',
+            layerName: 'layer_PetaKesesuaianLokasi_8',
+            pane: 'pane_PetaKesesuaianLokasi_8',
+            onEachFeature: pop_PetaKesesuaianLokasi_8,
+            style: style_PetaKesesuaianLokasi_8_0,
         });
-        bounds_group.addLayer(layer_PetaLokasiPengembangan_8);
-        map.addLayer(layer_PetaLokasiPengembangan_8);
+        bounds_group.addLayer(layer_PetaKesesuaianLokasi_8);
+        map.addLayer(layer_PetaKesesuaianLokasi_8);
         function pop_PermukimanEksisting_9(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -897,7 +951,7 @@
         });
         bounds_group.addLayer(layer_SungaiBrantas_10);
         map.addLayer(layer_SungaiBrantas_10);
-        function pop_BatasWilayahKecamatan_11(feature, layer) {
+        function pop_BatasKelurahan_11(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -917,8 +971,12 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">kecamatan</th>\
-                        <td>' + (feature.properties['kecamatan'] !== null ? autolinker.link(feature.properties['kecamatan'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">KELURAHAN</th>\
+                        <td class="visible-with-data" id="KELURAHAN">' + (feature.properties['KELURAHAN'] !== null ? autolinker.link(feature.properties['KELURAHAN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KECAMATAN</th>\
+                        <td class="visible-with-data" id="KECAMATAN">' + (feature.properties['KECAMATAN'] !== null ? autolinker.link(feature.properties['KECAMATAN'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -928,9 +986,9 @@
             popup.setContent(updatedContent);
         }
 
-        function style_BatasWilayahKecamatan_11_0() {
+        function style_BatasKelurahan_11_0() {
             return {
-                pane: 'pane_BatasWilayahKecamatan_11',
+                pane: 'pane_BatasKelurahan_11',
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '4.0,2.0',
@@ -941,20 +999,20 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_BatasWilayahKecamatan_11');
-        map.getPane('pane_BatasWilayahKecamatan_11').style.zIndex = 411;
-        map.getPane('pane_BatasWilayahKecamatan_11').style['mix-blend-mode'] = 'normal';
-        var layer_BatasWilayahKecamatan_11 = new L.geoJson(json_BatasWilayahKecamatan_11, {
+        map.createPane('pane_BatasKelurahan_11');
+        map.getPane('pane_BatasKelurahan_11').style.zIndex = 411;
+        map.getPane('pane_BatasKelurahan_11').style['mix-blend-mode'] = 'normal';
+        var layer_BatasKelurahan_11 = new L.geoJson(json_BatasKelurahan_11, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_BatasWilayahKecamatan_11',
-            layerName: 'layer_BatasWilayahKecamatan_11',
-            pane: 'pane_BatasWilayahKecamatan_11',
-            onEachFeature: pop_BatasWilayahKecamatan_11,
-            style: style_BatasWilayahKecamatan_11_0,
+            dataVar: 'json_BatasKelurahan_11',
+            layerName: 'layer_BatasKelurahan_11',
+            pane: 'pane_BatasKelurahan_11',
+            onEachFeature: pop_BatasKelurahan_11,
+            style: style_BatasKelurahan_11_0,
         });
-        bounds_group.addLayer(layer_BatasWilayahKecamatan_11);
-        map.addLayer(layer_BatasWilayahKecamatan_11);
+        bounds_group.addLayer(layer_BatasKelurahan_11);
+        map.addLayer(layer_BatasKelurahan_11);
         function pop_SMASMKEksisting_12(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -1081,63 +1139,7 @@
             },
         });
         bounds_group.addLayer(layer_SMASMKEksisting_12);
-        function pop_JaringanJalan_13(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (var i in e.target._eventParents) {
-                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
-                            e.target._eventParents[i].resetStyle(e.target);
-                        }
-                    }
-                    if (typeof layer.closePopup == 'function') {
-                        layer.closePopup();
-                    } else {
-                        layer.eachLayer(function(feature){
-                            feature.closePopup()
-                        });
-                    }
-                },
-                mouseover: highlightFeature,
-            });
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['fungsi'] !== null ? autolinker.link(feature.properties['fungsi'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
-            var popup = layer.getPopup();
-            var content = popup.getContent();
-            var updatedContent = removeEmptyRowsFromPopupContent(content, feature);
-            popup.setContent(updatedContent);
-        }
-
-        function style_JaringanJalan_13_0() {
-            return {
-                pane: 'pane_JaringanJalan_13',
-                opacity: 1,
-                color: 'rgba(162,35,37,1.0)',
-                dashArray: '',
-                lineCap: 'square',
-                lineJoin: 'bevel',
-                weight: 1,
-                fillOpacity: 0,
-                interactive: false,
-            }
-        }
-        map.createPane('pane_JaringanJalan_13');
-        map.getPane('pane_JaringanJalan_13').style.zIndex = 413;
-        map.getPane('pane_JaringanJalan_13').style['mix-blend-mode'] = 'normal';
-        var layer_JaringanJalan_13 = new L.geoJson(json_JaringanJalan_13, {
-            attribution: '',
-            interactive: false,
-            dataVar: 'json_JaringanJalan_13',
-            layerName: 'layer_JaringanJalan_13',
-            pane: 'pane_JaringanJalan_13',
-            onEachFeature: pop_JaringanJalan_13,
-            style: style_JaringanJalan_13_0,
-        });
-        bounds_group.addLayer(layer_JaringanJalan_13);
-        function pop_JalanKolektor_14(feature, layer) {
+        function pop_JalanKolektor_13(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -1170,9 +1172,9 @@
             popup.setContent(updatedContent);
         }
 
-        function style_JalanKolektor_14_0() {
+        function style_JalanKolektor_13_0() {
             return {
-                pane: 'pane_JalanKolektor_14',
+                pane: 'pane_JalanKolektor_13',
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
@@ -1183,9 +1185,9 @@
                 interactive: false,
             }
         }
-        function style_JalanKolektor_14_1() {
+        function style_JalanKolektor_13_1() {
             return {
-                pane: 'pane_JalanKolektor_14',
+                pane: 'pane_JalanKolektor_13',
                 opacity: 1,
                 color: 'rgba(214,0,4,1.0)',
                 dashArray: '',
@@ -1196,72 +1198,19 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_JalanKolektor_14');
-        map.getPane('pane_JalanKolektor_14').style.zIndex = 414;
-        map.getPane('pane_JalanKolektor_14').style['mix-blend-mode'] = 'normal';
-        var layer_JalanKolektor_14 = new L.geoJson.multiStyle(json_JalanKolektor_14, {
+        map.createPane('pane_JalanKolektor_13');
+        map.getPane('pane_JalanKolektor_13').style.zIndex = 413;
+        map.getPane('pane_JalanKolektor_13').style['mix-blend-mode'] = 'normal';
+        var layer_JalanKolektor_13 = new L.geoJson.multiStyle(json_JalanKolektor_13, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_JalanKolektor_14',
-            layerName: 'layer_JalanKolektor_14',
-            pane: 'pane_JalanKolektor_14',
-            onEachFeature: pop_JalanKolektor_14,
-            styles: [style_JalanKolektor_14_0,style_JalanKolektor_14_1,]
+            dataVar: 'json_JalanKolektor_13',
+            layerName: 'layer_JalanKolektor_13',
+            pane: 'pane_JalanKolektor_13',
+            onEachFeature: pop_JalanKolektor_13,
+            styles: [style_JalanKolektor_13_0,style_JalanKolektor_13_1,]
         });
-        bounds_group.addLayer(layer_JalanKolektor_14);
-        function pop_JalurKeretaApi_15(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (var i in e.target._eventParents) {
-                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
-                            e.target._eventParents[i].resetStyle(e.target);
-                        }
-                    }
-                    if (typeof layer.closePopup == 'function') {
-                        layer.closePopup();
-                    } else {
-                        layer.eachLayer(function(feature){
-                            feature.closePopup()
-                        });
-                    }
-                },
-                mouseover: highlightFeature,
-            });
-            var popupContent = '<table>\
-                </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
-            var popup = layer.getPopup();
-            var content = popup.getContent();
-            var updatedContent = removeEmptyRowsFromPopupContent(content, feature);
-            popup.setContent(updatedContent);
-        }
-
-        function style_JalurKeretaApi_15_0() {
-            return {
-                pane: 'pane_JalurKeretaApi_15',
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'round',
-                lineJoin: 'round',
-                weight: 3.0,
-                fillOpacity: 0,
-                interactive: false,
-            }
-        }
-        map.createPane('pane_JalurKeretaApi_15');
-        map.getPane('pane_JalurKeretaApi_15').style.zIndex = 415;
-        map.getPane('pane_JalurKeretaApi_15').style['mix-blend-mode'] = 'normal';
-        var layer_JalurKeretaApi_15 = new L.geoJson(json_JalurKeretaApi_15, {
-            attribution: '',
-            interactive: false,
-            dataVar: 'json_JalurKeretaApi_15',
-            layerName: 'layer_JalurKeretaApi_15',
-            pane: 'pane_JalurKeretaApi_15',
-            onEachFeature: pop_JalurKeretaApi_15,
-            style: style_JalurKeretaApi_15_0,
-        });
-        bounds_group.addLayer(layer_JalurKeretaApi_15);
+        bounds_group.addLayer(layer_JalanKolektor_13);
             var title = new L.Control();
             title.onAdd = function (map) {
                 this._div = L.DomUtil.create('div', 'info');
@@ -1272,7 +1221,7 @@
                 this._div.innerHTML = '<h2>Lokasi Pengembangan Fasilitas Pendidkan SMA & SMK Kota Kediri</h2>';
             };
             title.addTo(map);
-            var abstract = new L.Control({'position':'topright'});
+            var abstract = new L.Control({'position':'bottomright'});
             abstract.onAdd = function (map) {
                 this._div = L.DomUtil.create('div',
                 'leaflet-control abstract');
@@ -1290,7 +1239,7 @@
                 abstract.show = function () {
                     this._div.classList.remove("abstract");
                     this._div.classList.add("abstractUncollapsed");
-                    this._div.innerHTML = 'Kesesuaian lokasi pengembangan ini dihasilkan dari overlay beberapa peta yaitu:<br />Peta Kemiringan Lereng, Peta Rawan Bencana Banjir dan Longsor, Peta Pola Ruang, Peta Akses Jalan, Peta Akses Permukiman, dan Peta Radius Kepadatan Sekolah.<br /><br />Luas lokasi pengembangan yang sangat sesuai tiap kecamatan seluas:<br />Kecamatan Pesantren: 345,28 Ha<br />Kecamatan Mojoroto: 32,55 Ha<br />Kecamatan Kota: 57,58 Ha';
+                    this._div.innerHTML = 'Kesesuaian lokasi pengembangan ini dihasilkan dari overlay beberapa peta yaitu:<br />Peta Kemiringan Lereng, Peta Rawan Bencana Banjir dan Longsor, Peta Pola Ruang, Peta Akses Jalan, Peta Akses Permukiman, dan Peta Radius Kepadatan Sekolah.<br /><br />Luas lokasi yang sangat sesuai tiap kecamatan seluas:<br />Kecamatan Pesantren: 345,28 Ha meliputi kelurahan Blabak, Bawang, Batet, Tosaren, Pekunden, Singonegaran, Tinalan, dan Burengan<br />Kecamatan Mojoroto: 32,55 Ha meliputi kelurahan Pojok,, Gayam, Mrican, Tamanan, dan Lirboyo<br />Kecamatan Kota: 57,58 Ha meliputi kelurahan Semampir, Ngadirejo, Banjaran, Rejomulyo, dan Ngronggo';
             };
             abstract.addTo(map);
         var osmGeocoder = new L.Control.Geocoder({
@@ -1306,24 +1255,22 @@
         var baseMaps = {};
         var overlaysTree = [
         {label: '<b>PETA DASAR</b>', selectAllCheckbox: true, children: [
-            {label: '<img src="legend/JalurKeretaApi_15.png" /> Jalur Kereta Api', layer: layer_JalurKeretaApi_15},
-            {label: '<img src="legend/JalanKolektor_14.png" /> Jalan Kolektor', layer: layer_JalanKolektor_14},
-            {label: '<img src="legend/JaringanJalan_13.png" /> Jaringan Jalan', layer: layer_JaringanJalan_13},
+            {label: '<img src="legend/JalanKolektor_13.png" /> Jalan Kolektor', layer: layer_JalanKolektor_13},
             {label: 'SMA & SMK Eksisting<br /><table><tr><td style="text-align: center;"><img src="legend/SMASMKEksisting_12_SMANegeri0.png" /></td><td>SMA Negeri</td></tr><tr><td style="text-align: center;"><img src="legend/SMASMKEksisting_12_SMASwasta1.png" /></td><td>SMA Swasta</td></tr><tr><td style="text-align: center;"><img src="legend/SMASMKEksisting_12_SMKNegeri2.png" /></td><td>SMK Negeri</td></tr><tr><td style="text-align: center;"><img src="legend/SMASMKEksisting_12_SMKSwasta3.png" /></td><td>SMK Swasta</td></tr></table>', layer: layer_SMASMKEksisting_12},
-            {label: '<img src="legend/BatasWilayahKecamatan_11.png" /> Batas Wilayah Kecamatan', layer: layer_BatasWilayahKecamatan_11},
+            {label: '<img src="legend/BatasKelurahan_11.png" /> Batas Kelurahan', layer: layer_BatasKelurahan_11},
             {label: '<img src="legend/SungaiBrantas_10.png" /> Sungai Brantas', layer: layer_SungaiBrantas_10},
             {label: '<img src="legend/PermukimanEksisting_9.png" /> Permukiman Eksisting', layer: layer_PermukimanEksisting_9},]},
         {label: '<b>PETA ANALISIS</b>', selectAllCheckbox: true, children: [
-            {label: 'Peta Lokasi Pengembangan<br /><table><tr><td style="text-align: center;"><img src="legend/PetaLokasiPengembangan_8_LokasiSangatSesuai0.png" /></td><td>Lokasi Sangat Sesuai</td></tr><tr><td style="text-align: center;"><img src="legend/PetaLokasiPengembangan_8_LokasiSesuai1.png" /></td><td>Lokasi Sesuai</td></tr><tr><td style="text-align: center;"><img src="legend/PetaLokasiPengembangan_8_LokasiTidakSesuai2.png" /></td><td>Lokasi Tidak Sesuai</td></tr></table>', layer: layer_PetaLokasiPengembangan_8},
+            {label: 'Peta Kesesuaian Lokasi<br /><table><tr><td style="text-align: center;"><img src="legend/PetaKesesuaianLokasi_8_LokasiSangatSesuai0.png" /></td><td>Lokasi Sangat Sesuai</td></tr><tr><td style="text-align: center;"><img src="legend/PetaKesesuaianLokasi_8_LokasiSesuai1.png" /></td><td>Lokasi Sesuai</td></tr><tr><td style="text-align: center;"><img src="legend/PetaKesesuaianLokasi_8_LokasiTidakSesuai2.png" /></td><td>Lokasi Tidak Sesuai</td></tr></table>', layer: layer_PetaKesesuaianLokasi_8},
             {label: 'Peta Kemiringan Lereng<br /><table><tr><td style="text-align: center;"><img src="legend/PetaKemiringanLereng_7_080.png" /></td><td>0 - 8%</td></tr><tr><td style="text-align: center;"><img src="legend/PetaKemiringanLereng_7_8151.png" /></td><td>8 - 15%</td></tr><tr><td style="text-align: center;"><img src="legend/PetaKemiringanLereng_7_15252.png" /></td><td>15 - 25%</td></tr><tr><td style="text-align: center;"><img src="legend/PetaKemiringanLereng_7_25453.png" /></td><td>25 - 45%</td></tr><tr><td style="text-align: center;"><img src="legend/PetaKemiringanLereng_7_454.png" /></td><td>>45%</td></tr></table>', layer: layer_PetaKemiringanLereng_7},
-            {label: 'Peta Rawan Longsor<br /><table><tr><td style="text-align: center;"><img src="legend/PetaRawanLongsor_6_Rendah0.png" /></td><td>Rendah</td></tr><tr><td style="text-align: center;"><img src="legend/PetaRawanLongsor_6_Tinggi1.png" /></td><td>Tinggi</td></tr></table>', layer: layer_PetaRawanLongsor_6},
-            {label: 'Peta Rawan Banjir<br /><table><tr><td style="text-align: center;"><img src="legend/PetaRawanBanjir_5_Rendah0.png" /></td><td>Rendah</td></tr><tr><td style="text-align: center;"><img src="legend/PetaRawanBanjir_5_Tinggi1.png" /></td><td>Tinggi</td></tr></table>', layer: layer_PetaRawanBanjir_5},
-            {label: 'Peta Akses Jalan<br /><table><tr><td style="text-align: center;"><img src="legend/PetaAksesJalan_4_300Meter0.png" /></td><td>300 Meter</td></tr><tr><td style="text-align: center;"><img src="legend/PetaAksesJalan_4_600Meter1.png" /></td><td>600 Meter</td></tr><tr><td style="text-align: center;"><img src="legend/PetaAksesJalan_4_1200Meter2.png" /></td><td>1200 Meter</td></tr><tr><td style="text-align: center;"><img src="legend/PetaAksesJalan_4_3000Meter3.png" /></td><td>3000 Meter</td></tr><tr><td style="text-align: center;"><img src="legend/PetaAksesJalan_4_3000Meter4.png" /></td><td>>3000 Meter</td></tr></table>', layer: layer_PetaAksesJalan_4},
-            {label: 'Peta Akses Permukiman<br /><table><tr><td style="text-align: center;"><img src="legend/PetaAksesPermukiman_3_300Meter0.png" /></td><td>300 Meter</td></tr><tr><td style="text-align: center;"><img src="legend/PetaAksesPermukiman_3_600Meter1.png" /></td><td>600 Meter</td></tr><tr><td style="text-align: center;"><img src="legend/PetaAksesPermukiman_3_1200Meter2.png" /></td><td>1200 Meter</td></tr><tr><td style="text-align: center;"><img src="legend/PetaAksesPermukiman_3_3000Meter3.png" /></td><td>3000 Meter</td></tr></table>', layer: layer_PetaAksesPermukiman_3},
-            {label: 'Peta Radius Kepadatan Sekolah<br /><table><tr><td style="text-align: center;"><img src="legend/PetaRadiusKepadatanSekolah_2_30000.png" /></td><td>>3000</td></tr><tr><td style="text-align: center;"><img src="legend/PetaRadiusKepadatanSekolah_2_20001.png" /></td><td>2000</td></tr><tr><td style="text-align: center;"><img src="legend/PetaRadiusKepadatanSekolah_2_10002.png" /></td><td>1000</td></tr></table>', layer: layer_PetaRadiusKepadatanSekolah_2},]},
+            {label: 'Peta Rawan Banjir<br /><table><tr><td style="text-align: center;"><img src="legend/PetaRawanBanjir_6_Rendah0.png" /></td><td>Rendah</td></tr><tr><td style="text-align: center;"><img src="legend/PetaRawanBanjir_6_Tinggi1.png" /></td><td>Tinggi</td></tr></table>', layer: layer_PetaRawanBanjir_6},
+            {label: 'Peta Rawan Longsor<br /><table><tr><td style="text-align: center;"><img src="legend/PetaRawanLongsor_5_Rendah0.png" /></td><td>Rendah</td></tr><tr><td style="text-align: center;"><img src="legend/PetaRawanLongsor_5_Tinggi1.png" /></td><td>Tinggi</td></tr></table>', layer: layer_PetaRawanLongsor_5},
+            {label: 'Peta Pola Ruang<br /><table><tr><td style="text-align: center;"><img src="legend/PetaPolaRuang_4_Sesuai0.png" /></td><td>Sesuai</td></tr><tr><td style="text-align: center;"><img src="legend/PetaPolaRuang_4_TidakSesuai1.png" /></td><td>Tidak Sesuai</td></tr></table>', layer: layer_PetaPolaRuang_4},
+            {label: 'Peta Akses Jalan<br /><table><tr><td style="text-align: center;"><img src="legend/PetaAksesJalan_3_0300Meter0.png" /></td><td>0 - 300 Meter</td></tr><tr><td style="text-align: center;"><img src="legend/PetaAksesJalan_3_300600Meter1.png" /></td><td>300 - 600 Meter</td></tr><tr><td style="text-align: center;"><img src="legend/PetaAksesJalan_3_6001200Meter2.png" /></td><td>600 - 1200 Meter</td></tr><tr><td style="text-align: center;"><img src="legend/PetaAksesJalan_3_12003000Meter3.png" /></td><td>1200 - 3000 Meter</td></tr><tr><td style="text-align: center;"><img src="legend/PetaAksesJalan_3_3000Meter4.png" /></td><td>>3000 Meter</td></tr></table>', layer: layer_PetaAksesJalan_3},
+            {label: 'Peta Akses Permukiman<br /><table><tr><td style="text-align: center;"><img src="legend/PetaAksesPermukiman_2_0300Meter0.png" /></td><td>0 - 300 Meter</td></tr><tr><td style="text-align: center;"><img src="legend/PetaAksesPermukiman_2_300600Meter1.png" /></td><td>300 - 600 Meter</td></tr><tr><td style="text-align: center;"><img src="legend/PetaAksesPermukiman_2_6001200Meter2.png" /></td><td>600 - 1200 Meter</td></tr><tr><td style="text-align: center;"><img src="legend/PetaAksesPermukiman_2_12003000Meter3.png" /></td><td>1200 - 3000 Meter</td></tr></table>', layer: layer_PetaAksesPermukiman_2},
+            {label: 'Peta Jangkauan Sekolah<br /><table><tr><td style="text-align: center;"><img src="legend/PetaJangkauanSekolah_1_1000Meter0.png" /></td><td>1000 Meter</td></tr><tr><td style="text-align: center;"><img src="legend/PetaJangkauanSekolah_1_2000Meter1.png" /></td><td>2000 Meter</td></tr><tr><td style="text-align: center;"><img src="legend/PetaJangkauanSekolah_1_2000Meter2.png" /></td><td>>2000 Meter</td></tr></table>', layer: layer_PetaJangkauanSekolah_1},]},
         {label: '<b>BASEMAP</b>', selectAllCheckbox: true, children: [
-            {label: "Positron", layer: layer_Positron_1},
-            {label: "ESRI Satellite", layer: layer_ESRISatellite_0},]},]
+            {label: "Positron", layer: layer_Positron_0},]},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
             //selectorBack: false,
