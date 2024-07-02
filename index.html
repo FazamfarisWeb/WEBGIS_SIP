@@ -20,7 +20,7 @@
             margin: 0;
         }
         </style>
-        <title>Lokasi Pengembangan Fasilitas Pendidkan SMA & SMK Kota Kediri</title>
+        <title>Kesesuaian Lokasi Fasilitas Pendidkan SMA & SMK Kota Kediri</title>
     </head>
     <body>
         <div id="map">
@@ -210,6 +210,7 @@
             style: style_PetaJangkauanSekolah_1_0,
         });
         bounds_group.addLayer(layer_PetaJangkauanSekolah_1);
+        map.addLayer(layer_PetaJangkauanSekolah_1);
         function pop_PetaAksesPermukiman_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -309,6 +310,7 @@
             style: style_PetaAksesPermukiman_2_0,
         });
         bounds_group.addLayer(layer_PetaAksesPermukiman_2);
+        map.addLayer(layer_PetaAksesPermukiman_2);
         function pop_PetaAksesJalan_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -418,6 +420,7 @@
             style: style_PetaAksesJalan_3_0,
         });
         bounds_group.addLayer(layer_PetaAksesJalan_3);
+        map.addLayer(layer_PetaAksesJalan_3);
         function pop_PetaPolaRuang_4(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -485,6 +488,7 @@
             style: style_PetaPolaRuang_4_0,
         });
         bounds_group.addLayer(layer_PetaPolaRuang_4);
+        map.addLayer(layer_PetaPolaRuang_4);
         function pop_PetaRawanLongsor_5(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -558,6 +562,7 @@
             style: style_PetaRawanLongsor_5_0,
         });
         bounds_group.addLayer(layer_PetaRawanLongsor_5);
+        map.addLayer(layer_PetaRawanLongsor_5);
         function pop_PetaRawanBanjir_6(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -631,6 +636,7 @@
             style: style_PetaRawanBanjir_6_0,
         });
         bounds_group.addLayer(layer_PetaRawanBanjir_6);
+        map.addLayer(layer_PetaRawanBanjir_6);
         function pop_PetaKemiringanLereng_7(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -740,6 +746,7 @@
             style: style_PetaKemiringanLereng_7_0,
         });
         bounds_group.addLayer(layer_PetaKemiringanLereng_7);
+        map.addLayer(layer_PetaKemiringanLereng_7);
         function pop_PetaKesesuaianLokasi_8(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -1139,6 +1146,7 @@
             },
         });
         bounds_group.addLayer(layer_SMASMKEksisting_12);
+        map.addLayer(layer_SMASMKEksisting_12);
         function pop_JalanKolektor_13(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -1218,7 +1226,7 @@
                 return this._div;
             };
             title.update = function () {
-                this._div.innerHTML = '<h2>Lokasi Pengembangan Fasilitas Pendidkan SMA & SMK Kota Kediri</h2>';
+                this._div.innerHTML = '<h2>Kesesuaian Lokasi Fasilitas Pendidkan SMA & SMK Kota Kediri</h2>';
             };
             title.addTo(map);
             var abstract = new L.Control({'position':'bottomright'});
